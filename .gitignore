@@ -1,2 +1,4 @@
+.htaccess
 composer.phar
 vendor/
+web/.htaccess
