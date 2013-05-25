@@ -8,4 +8,4 @@ Paperkegularity Installation
 
 3. Install Dependencies
 
-        php composer.phar install
+        $ php composer.phar install
