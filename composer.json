@@ -1,6 +1,6 @@
 {
     "require": {
         "silex/silex": "~1.0",
-		"dg/twitter-php": "~3.0"
+        "dg/twitter-php": "~3.0"
     }
 }
