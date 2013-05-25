@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js"></script>
+		<script>
+			$.ajax({
+				url: 'data', dataType: 'json',
+				success: function(data){
+					$('h2').remove();
+					var base = $(data).first()[0].points;
+					var height = base*1;
+					$.each(data, function(){
+						var h = (this.points/base)*73;
+						if (h > height) height = h;
+						$('#charts').append('<div><div class="col" style="height:'+h+'px;"></div></div>');
+						$('#users > div').append('<div><img src="'+this.photo+'" /><a href="https://twitter.com/'+this.name+'">@'+this.name+'</a></div>');
+					})
+					$('#charts').css('height', height);
+				}
+			})
+		</script>
+		<link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+			body {
+				background-color: #CCCCCC;
+				font-family: 'Oswald', sans-serif;
+				margin: 0;
+				padding: 0;
+				text-align: center;
+			}
+			h1, p {
+				margin: 0;
+				padding: 0;
+			}
+			a {
+				color: #284B7E;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			.clearfix:after {  
+				content: " ";  
+				display: table;  
+			}
+			header {
+				background-color: #FFFFFF;
+				margin-top: 10px;
+				padding: 10px;
+			}
+			#charts {
+				margin: 10px auto 0;
+				width: 480px;
+			}
+			#charts > div {
+				float: left;
+				height: 100%;
+				position: relative;
+				width: 120px;
+			}
+			#charts > div > div {
+				margin: 0 auto;
+				position: absolute;
+					bottom: 0;
+					left: 23px;
+				width: 73px;
+			}
+			#charts > div:nth-child(1) > div {
+				background-color: #00B060;
+			}
+			#charts > div:nth-child(2) > div {
+				background-color: #437DD4;
+			}
+			#charts > div:nth-child(3) > div {
+				background-color: #FFB840;
+			}
+			#charts > div:nth-child(4) > div {
+				background-color: #FF7340;
+			}
+			#users {
+				background-color: #FFFFFF;
+			}
+			#users > div {
+				margin: 0 auto;
+				width: 480px;
+			}
+			#users > div > div {
+				float: left;
+				height: 100%;
+				padding: 4px 0;
+				position: relative;
+				width: 120px;
+			}
+			#users a {
+				display: block;
+			}
+			#fineprint {
+				font-size: 80%;
+				padding: 10px 0 30px 0;
+			}
+		</style>
+		<title>Paperkegularity v1.0</title>
+	</head>
+	<body>
+		<header>
+			<h1>Paperkegularity v1.0</h1>
+			<p>Popularity of Paperkeg Hosts as Defined by Twitter Sciences</p>
+		</header>
+		<div id='charts'>
+			<h2>Loading...</h2>
+		</div>
+		<div id='users'>
+			<div class="clearfix"></div>
+		</div>
+		<div id="fineprint">
+			<p>*May Not Reflect Actual Science</p>
+			<p>Built by <a href='https://twitter.com/JimLindForPope'>@JimLindForPope</a></p>
+			<p>Source on <a href='https://github.com/jimlind/Paperkegularity'>GitHub</a></p>
+		</div>
+	</body>
+</html>
